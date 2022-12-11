@@ -37,6 +37,7 @@ exports.create = (req, res, next) => {
      );
 }
 
+
 //render login page
 exports.userLogin = (req, res, next) => {
      return res.render('./user/login')
