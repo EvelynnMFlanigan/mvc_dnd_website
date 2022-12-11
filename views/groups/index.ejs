@@ -1,0 +1,25 @@
+<%- include('../partials/header.ejs') %>
+<% const mainGroup = groups.filter(group => group.version === '5e');%>
+<% const hbGroup = groups.filter(group => group.version === 'Homebrew');%>
+
+<div class="groupList">
+<% if(groups.length){ %>
+<h2><u>5e Games!</u></h2>
+<%mainGroup.forEach( group =>{%>
+    <a href="/groups/<%=group.id%>"><h3><%=group.gameName %></h3></a>
+    <p>Event held on: <%=group.dayOfWeek%>'s </p>
+<% }); %>
+
+<h2><u>Homebrew Games!</u></h2>
+<%hbGroup.forEach( group =>{%>
+    <a href="/groups/<%=group.id%>"><h3><%=group.gameName %></h3></a>
+    <p>Event held on :<%=group.dayOfWeek%>'s</p>
+<% }); %>
+
+<% } else { %>
+    <p>There are no Groups to join. Be Adventureous and start your own!</p>
+<%} %>
+
+</div>
+
+<%- include('../partials/footer.ejs') %>

@@ -1,0 +1,38 @@
+<%- include('../partials/header.ejs') %>
+
+<% const mainGroup = groups.filter(group => group.version === '5e');%>
+<% const hbGroup = groups.filter(group => group.version === 'Homebrew');%>
+
+
+<h2>Welcome <%=user.firstName%></h2>
+
+<h3>You are the DM of the following groups</h3>
+<div class="groupList">
+<% if(groups.length){ %>
+    <h2><u>5e Games!</u></h2>
+    <%mainGroup.forEach( group =>{%>
+        <a href="/groups/<%=group.id%>"><h3><%=group.gameName %></h3></a>
+        <p>On <%=group.dayOfWeek%>'s at <%=group.startTime %> </p>
+        <form>
+            <button type="submit" formmethod="GET" formaction="/groups/<%= group.id%>/edit">Edit</button>
+            <button type="submit" formmethod="Post" formaction="/groups/<%= group.id%>?_method=DELETE">Delete</button>
+        </form>
+    <% }); %>
+    
+    <h2><u>Homebrew Games!</u></h2>
+    <%hbGroup.forEach( group =>{%>
+        <a href="/groups/<%=group.id%>"><h3><%=group.gameName %></h3></a>
+        <p>On <%=group.dayOfWeek%>'s at <%=group.startTime%></p>
+        <form>
+            <button type="submit" formmethod="GET" formaction="/groups/<%= group.id%>/edit">Edit</button>
+            <button type="submit" formmethod="Post" formaction="/groups/<%= group.id%>?_method=DELETE">Delete</button>
+        </form>
+    <% }); %>
+    
+    <% } else { %>
+        <p>There are no Groups to join. Be Adventureous and start your own!</p>
+    <%} %>
+    
+    </div>
+
+<%- include('../partials/footer.ejs') %>

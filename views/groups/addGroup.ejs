@@ -1,0 +1,57 @@
+<%- include('../partials/header.ejs') %>
+
+<div class="groupList">
+    <form method="POST" action="/groups">
+<label for="gameName">Group Name:</label>
+<input type="text" id="gameName" name="gameName" class="fixed-width" required>
+
+</br>
+
+<label for="version">Version: </label>
+<select type="text" id="version" name="version" required>
+    <option value="none" selected disabled hidden>Choose an option</option>
+<option value="Homebrew">Homebrew</option>
+<option value="5e">5e</option>    
+</select>
+
+</br>
+
+<label for="location"  >Location : </label>
+<input type="text" id="location" name="location" class="fixed-width" required>
+
+</br>
+
+<label for="dayOfWeek">Day of week: </label>
+<select type="text" id="dayOfWeek" name="dayOfWeek"  required>
+<option value="none" selected disabled hidden>Choose an option</option>
+<option value="sunday">Sunday</option>
+<option value="Monday">Monday</option>
+<option value="Tueday">Tuesday</option>
+<option value="Wednesday">Wednesday</option>
+<option value="Thursday">Thursday</option>
+<option value="Friday">Friday</option>
+<option value="Saturday">Saturday</option> 
+</select>
+</br>
+
+
+<label for="description">Short Description: </label>
+<textarea  rows="3" id="description" name="description" class="fixed-width" required minlength="20"></textarea>
+
+</br>
+
+<label for="startTime" >Start Time: </label>
+<input type="time" id="startTime" name="startTime"  class="fixed-width" required>
+
+</br>
+
+<label for="endTime">End Time</label>
+<input type="time" id="endTime" name="endTime"  class="fixed-width" required>
+
+</br>
+
+<button>Update</button>
+</div>
+</form>
+
+<%- include('../partials/footer.ejs') %>

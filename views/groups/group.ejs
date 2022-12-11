@@ -1,0 +1,34 @@
+<%- include('../partials/header.ejs') %>
+<% const rsvpCount = rsvp.length; %>
+
+<div class="groupList">
+<h2><%=group.gameName %></h2>
+<p>
+    <p><b>Hosted by <%=group.dm.firstName%></b></p>
+    <p><b>Meets on:</b> <%=group.dayOfWeek%>'s</p>
+    <p><b>Meetings start at: </b> <%=group.startTime%></p>
+    <p><b>Meets end at around: </b> <%=group.endTime%></p>
+    <p><b>Meets at:</b> <%=group.location%></p>
+    <p><b>Short description of the game:</b> <%=group.description%></p>
+</p>
+
+<%if(user == group.dm._id){ %>
+    <b>So far people have rsvp'd</b>
+<form>
+    <button type="submit" formmethod="GET" formaction="/groups/<%= group.id%>/edit">Edit</button>
+    <button type="submit" formmethod="Post" formaction="/groups/<%= group.id%>?_method=DELETE">Delete</button>
+</form>
+</div>
+
+<% } else { %>
+    <h3>RSVP to get invited to a game!</h3>
+    <b>So far <%=rsvpCount%> people have rsvp'd</b>
+    <form>
+        <button type="submit" formmethod="Post" formaction="/groups/<%= group.id%>/rsvp">Yes!</button>
+        <button type="submit" >No</button>
+        <button type="submit" >Maybe</button>
+    </form>
+</div>
+<% } %>
+
+<%- include('../partials/footer.ejs') %>

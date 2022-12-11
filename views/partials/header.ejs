@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<head>
+<link rel="stylesheet" href="/css/pages.css">
+</head>
+<body>
+<div class="banner"> <h1>D&D-4-WE</h1>
+</div>
+<div class="navbar">
+
+    <li><a href="/">Home</a></li>
+    <li><a href="/groups">Connections</a></li>
+    <li><a href="/groups/addGroup">Make a new connection</a></li>
+
+    <% if(!user){ %>
+    <li><a href="/user/new">Sign-up</a> </li>
+    <li><a href="/user/login">Log-In</a> </li>
+    <% } else { %>
+
+    <li><a href="/user/profile">profile</a> </li>
+    <li><a href="/user/logout">LogOut</a> </li>
+
+    <% } %>
+</div>
+
+<% if(errorMessages.length > 0) {%>
+    <% errorMessages.forEach(message=>{%>
+        <div class='error'>
+            <%=message%>
+        </div>
+        <%});%>
+            <%}%>
+
+                <% if(successMessages.length > 0) {%>
+
+                    <% successMessages.forEach(message=>{%>
+                        <div class='success'>
+                            <%=message%>
+                        </div>
+                        <%});%>
+                            <%}%>
